@@ -1,6 +1,8 @@
 var validMountainArray = function(A) {
-  if (A.length < 3) return false;
   let up = true;
+
+  if (A.length < 3) return false;
+  
   for (let i = 0; i < A.length - 1; i++) {
     if (A[i] === A[i + 1]) {
       return false
@@ -8,6 +10,7 @@ var validMountainArray = function(A) {
     if (up) {
       if (A[i] > A[i + 1]) {
         up = false;
+        if (i === 0) return false;
       }
     } else {
       if (A[i] < A[i + 1]) {
@@ -15,7 +18,7 @@ var validMountainArray = function(A) {
       }
     }
   }
-  return true;
+  return up === false;
 };
 
 let array = [2, 1];
